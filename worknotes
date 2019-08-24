@@ -4,11 +4,66 @@ _                ___       _.--.
 \`.|\..----...-'`   `-._.-'_.-'`
 /  ' `         ,       __.--'
 )/' _/     \   `-_,   /
-`-'" `"\_  ,_.-;_.-\_ ',     
+`-'" `"\_  ,_.-;_.-\_ ',
     _.-'_./   {_.'   ; /
    {_.-``-'         {_/
 ##
 
 Work notes:
 
-Log paths:
+WHM URL:
+https://IPADDRESS:2087/
+domain/WHM
+
+cPanel URL:
+https://IPADDRESS:2083/
+domain/cPanel
+
+/\/\/\/\ Ports /\/\/\/\
+
+SMTP     = 25(usually blocked)
+SMTP     = 587
+SMTP sec = 465
+
+IMAP sec = 993
+IMAP     = 143
+POP3     = 110
+POP3 sec = 995
+
+webmail  = 2095
+webmail sec  = 2096
+
+WHM      = 2087
+WHM sec  = 2086
+cPanel   = 2082
+cPanel sec = 2083
+
+/\/\/\/\/\/\/\/\/\/\/\
+
+/\/\/\/\ EXIM /\/\/\/\
+
+commands:
+
+  -exiwhat
+    *shows active connections
+
+  -ps -C exim wwwu
+    * shows all running exim processes
+
+  -lsof -c exim
+    * shows list of files used by Exim
+
+  -exigrep command for searching Exim logs
+
+/\/\/\/\/\/\/\/\/\/\/\
+
+/\/\/\/\ Logs /\/\/\/\
+
+Exim main log = /var/log/exim_mainlog   (main loged filles)
+     reject   = /var/log/exim_rejectlog (rejected based on policy)
+     crash    = /var/log/exim_paniclog  (exim crashes or never delivered)
+
+dovecot and SpamAssasin = /var/log/mailog
+mailman logs = /usr/local/cpanel/3rdparty/mailman/logs/*
+
+/\/\/\/\/\/\/\/\/\/\/\
